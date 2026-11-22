@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USA Authentic Recipes - 100+ American Dishes</title>
+    <!-- Google Fonts: Poppins & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- MONETAG AD SCRIPT PLACEHOLDER (ඔබේ Monetag කේතය මෙතැනට දමන්න) -->
+    <!-- <script src="https://alwingulla.com/88/tag.min.js" data-zone="YOUR_ZONE_ID" async data-cfasync="false"></script> -->
+
+    <style>
+        :root {
+            --primary-green: #1b4332;
+            --secondary-green: #2d6a4f;
+            --light-green: #d8f3dc;
+            --accent-green: #52b788;
+            --text-dark: #1f2421;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f9f4;
+            color: var(--text-dark);
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--light-green);
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-green);
+        }
+
+        /* Cover Photo / Hero Section */
+        .hero {
+            background: linear-gradient(rgba(27, 67, 50, 0.7), rgba(27, 67, 50, 0.7)), 
+                        url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 20px;
+            color: var(--light-green);
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        /* Monetag Ad Banner Slot */
+        .ad-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 15px;
+            background: var(--light-green);
+            border: 2px dashed var(--secondary-green);
+            text-align: center;
+            border-radius: 10px;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        /* Main Recipe Grid */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 15px;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .recipe-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 1px solid #e0ece4;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .recipe-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .recipe-info {
+            padding: 20px;
+        }
+
+        .recipe-tag {
+            background: var(--light-green);
+            color: var(--primary-green);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .recipe-info h3 {
+            margin: 10px 0;
+            color: var(--primary-green);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary-green);
+            color: var(--white);
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary-green);
+        }
+
+        /* Gemini AI Assistant & Add Recipe Section */
+        .gemini-box {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .gemini-box h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--light-green);
+            margin-bottom: 10px;
+        }
+
+        .gemini-input-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .gemini-input-group input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            min-width: 250px;
+        }
+
+        #gemini-response {
+            margin-top: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        /* Modal for Full Recipe & Comments */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-green);
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-top: 30px;
+            border-top: 2px solid var(--light-green);
+            padding-top: 20px;
+        }
+
+        .comment-form input, .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .comment-item {
+            background: #f4f9f4;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--secondary-green);
+        }
+
+        footer {
+            background: var(--primary-green);
+            color: var(--light-green);
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">🌿 USA Tasty Kitchen</div>
+        <nav>
+            <a href="#recipes">100 Recipes</a>
+            <a href="#gemini-ai">Gemini AI Chef</a>
+            <a href="#add-recipe">Add Dish</a>
+        </nav>
+    </header>
+
+    <!-- Cover Photo Section -->
+    <section class="hero">
+        <h1>100 Authentic American Recipes</h1>
+        <p>Explore classic USA dishes from New York Burgers to Southern BBQ, Apple Pie & Mac and Cheese.</p>
+        <div class="search-bar">
+            <input type="text" id="searchInput" onkeyup="searchRecipes()" placeholder="Search 100 USA recipes (e.g. Burger, Pie, BBQ)...">
+        </div>
+    </section>
+
+    <!-- Monetag Top Ad Slot -->
+    <div class="ad-container">
+        📢 MONETAG AD BANNER SPACE (728x90) - Place your Monetag Display Ad Code here
+    </div>
+
+    <!-- Main Container -->
+    <div class="container" id="recipes">
+        <h2 class="section-title">Popular USA Dishes (<span id="recipe-count">0</span> / 100)</h2>
+        
+        <!-- Recipes Grid -->
+        <div class="recipe-grid" id="recipeGrid"></div>
+
+        <!-- Monetag Middle Ad Slot -->
+        <div class="ad-container">
+            📢 MONETAG IN-PAGE / NATIVE AD SPACE - High CPM USA Traffic Zone
+        </div>
+
+        <!-- Gemini AI Integration Box -->
+        <div class="gemini-box" id="gemini-ai">
+            <h2>✨ Ask Gemini AI Chef & Customize Recipes</h2>
+            <p>Want to add new ingredients, get cooking tips, or generate a new USA recipe? Ask Gemini AI!</p>
+            <div class="gemini-input-group">
+                <input type="text" id="geminiPrompt" placeholder="e.g., Suggest a side dish for Texas BBQ Ribs...">
+                <button class="btn" style="background: var(--accent-green); color: #000; font-weight: bold;" onclick="askGemini()">Ask Gemini</button>
+            </div>
+            <div id="gemini-response"></div>
+        </div>
+
+        <!-- Add New Recipe Form (To easily reach 100 recipes) -->
+        <div class="gemini-box" style="background: var(--secondary-green);" id="add-recipe">
+            <h2>➕ Add New USA Recipe to Website</h2>
+            <div class="gemini-input-group">
+                <input type="text" id="newTitle" placeholder="Dish Name (e.g., Chicago Deep Dish Pizza)">
+                <input type="text" id="newImg" placeholder="Photo URL (Link)">
+                <input type="text" id="newCategory" placeholder="State / Category (e.g., Illinois)">
+                <input type="text" id="newDesc" placeholder="Ingredients & Short Instructions">
+                <button class="btn" style="background: var(--primary-green);" onclick="addNewRecipe()">Add Dish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipe Detail & Comments Modal -->
+    <div class="modal" id="recipeModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" style="width:100%; height:250px; object-fit:cover; border-radius:10px;">
+            <h2 id="modalTitle" style="color: var(--primary-green); margin-top:15px;"></h2>
+            <p id="modalDesc" style="margin: 15px 0; line-height:1.6;"></p>
+
+            <!-- Monetag Popup / Direct Link Button inside Recipe -->
+            <div class="ad-container" style="margin: 15px 0;">
+                <a href="https://your-monetag-direct-link.com" target="_blank" style="color: var(--primary-green); text-decoration:none;">
+                    👉 Download Printable Recipe PDF (Monetag Direct Link)
+                </a>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="comments-section">
+                <h3>💬 Reviews & Comments</h3>
+                <div class="comment-form" style="margin-top:10px;">
+                    <input type="text" id="commentUser" placeholder="Your Name (e.g., John from Texas)">
+                    <textarea id="commentText" rows="3" placeholder="Write your review about this recipe..."></textarea>
+                    <button class="btn" onclick="postComment()">Post Comment</button>
+                </div>
+                <div id="commentList" style="margin-top:15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 USA Tasty Kitchen | All Rights Reserved | Privacy Policy | Terms of Service</p>
+    </footer>
+
+    <script>
+        // Sample USA Recipes Database (ඔබට මෙතැනට කෑම වර්ග 100ක් දක්වා Copy-Paste කර ඇතුළත් කළ හැක)
+        let recipes = [
+            {
+                id: 1,
+                title: "Classic New York Cheeseburger",
+                category: "New York",
+                img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600",
+                desc: "Ingredients: 1/2 lb Ground Beef, Cheddar Cheese, Brioche Bun, Lettuce, Tomato, Special Sauce. Grill beef patty for 4 mins each side, melt cheese on top, and serve warm."
+            },
+            {
+                id: 2,
+                title: "Texas Smoked BBQ Ribs",
+                category: "Texas",
+                img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600",
+                desc: "Ingredients: Pork Ribs, Brown Sugar, Paprika, Garlic Powder, Hickory BBQ Sauce. Slow cook at 275°F for 3 hours and brush with BBQ sauce."
+            },
+            {
+                id: 3,
+                title: "Traditional American Apple Pie",
+                category: "All-American",
+                img: "https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?w=600",
+                desc: "Ingredients: Granny Smith Apples, Cinnamon, Nutmeg, Butter, Flaky Pie Crust. Bake at 375°F for 50 minutes until golden brown."
+            },
+            {
+                id: 4,
+                title: "Creamy Baked Mac and Cheese",
+                category: "Southern USA",
+                img: "https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?w=600",
+                desc: "Ingredients: Elbow Macaroni, Sharp Cheddar, Gruyere Cheese, Milk, Butter, Breadcrumbs. Bake for 25 minutes until bubbly."
+            },
+            {
+                id: 5,
+                title: "Buffalo Chicken Wings",
+                category: "New York",
+                img: "https://images.unsplash.com/photo-1608039755401-742074f0548d?w=600",
+                desc: "Ingredients: Chicken Wings, Frank's RedHot Sauce, Melted Butter, Blue Cheese Dressing. Fry crispy and toss in spicy buffalo sauce."
+            },
+            {
+                id: 6,
+                title: "New England Clam Chowder",
+                category: "Massachusetts",
+                img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600",
+                desc: "Ingredients: Fresh Clams, Potatoes, Bacon, Heavy Cream, Celery, Onions. Simmer until creamy and serve with oyster crackers."
+            }
+        ];
+
+        // Generate up to 100 placeholder slots automatically so the structure is ready for 100 items
+        for (let i = 7; i <= 100; i++) {
+            recipes.push({
+                id: i,
+                title: `USA Regional Specialty Dish #${i}`,
+                category: "USA Classic",
+                img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600",
+                desc: `Authentic American Recipe #${i}. Add your specific ingredients, cooking time, and step-by-step instructions here.`
+            });
+        }
+
+        let comments = [
+            { user: "Sarah M. (California)", text: "Tried the Mac and Cheese recipe today! My kids loved it." },
+            { user: "Mike R. (Texas)", text: "Best BBQ rib rub instructions online!" }
+        ];
+
+        // Render Recipes
+        function displayRecipes(list) {
+            const grid = document.getElementById("recipeGrid");
+            document.getElementById("recipe-count").innerText = list.length;
+            grid.innerHTML = "";
+
+            list.forEach(recipe => {
+                grid.innerHTML += `
+                    <div class="recipe-card">
+                        <img src="${recipe.img}" alt="${recipe.title}">
+                        <div class="recipe-info">
+                            <span class="recipe-tag">${recipe.category}</span>
+                            <h3>${recipe.title}</h3>
+                            <p>${recipe.desc.substring(0, 75)}...</p>
+                            <button class="btn" onclick="openRecipe(${recipe.id})">View Recipe & Comments</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Search Function
+        function searchRecipes() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const filtered = recipes.filter(r => 
+                r.title.toLowerCase().includes(query) || 
+                r.category.toLowerCase().includes(query)
+            );
+            displayRecipes(filtered);
+        }
+
+        // Add New Recipe dynamically
+        function addNewRecipe() {
+            const title = document.getElementById("newTitle").value;
+            const img = document.getElementById("newImg").value || "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600";
+            const category = document.getElementById("newCategory").value || "USA";
+            const desc = document.getElementById("newDesc").value;
+
+            if (!title || !desc) {
+                alert("Please enter Dish Name and Description!");
+                return;
+            }
+
+            recipes.unshift({
+                id: recipes.length + 1,
+                title: title,
+                category: category,
+                img: img,
+                desc: desc
+            });
+
+            displayRecipes(recipes);
+            alert("New USA Recipe Added!");
+        }
+
+        // Modal & Comments
+        function openRecipe(id) {
+            const recipe = recipes.find(r => r.id === id);
+            document.getElementById("modalImg").src = recipe.img;
+            document.getElementById("modalTitle").innerText = recipe.title;
+            document.getElementById("modalDesc").innerText = recipe.desc;
+            renderComments();
+            document.getElementById("recipeModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("recipeModal").style.display = "none";
+        }
+
+        function renderComments() {
+            const list = document.getElementById("commentList");
+            list.innerHTML = "";
+            comments.forEach(c => {
+                list.innerHTML += `<div class="comment-item"><strong>${c.user}:</strong> <p>${c.text}</p></div>`;
+            });
+        }
+
+        function postComment() {
+            const user = document.getElementById("commentUser").value;
+            const text = document.getElementById("commentText").value;
+            if (user && text) {
+                comments.unshift({ user, text });
+                renderComments();
+                document.getElementById("commentUser").value = "";
+                document.getElementById("commentText").value = "";
+            }
+        }
+
+        // Gemini AI Assistant Integration (Connect your Gemini API Key here for live responses)
+        async function askGemini() {
+            const prompt = document.getElementById("geminiPrompt").value;
+            const resBox = document.getElementById("gemini-response");
+            if (!prompt) return;
+
+            resBox.style.display = "block";
+            resBox.innerHTML = "⏳ Gemini AI Chef is thinking...";
+
+            // Note: To make this live, replace YOUR_GEMINI_API_KEY with your actual Google AI Studio API Key
+            const apiKey = "YOUR_GEMINI_API_KEY"; 
+            
+            if (apiKey === "YOUR_GEMINI_API_KEY") {
+                setTimeout(() => {
+                    resBox.innerHTML = `<strong>🤖 Gemini AI Chef:</st
